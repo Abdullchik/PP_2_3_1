@@ -14,18 +14,22 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "sureName")
-    private String sureName;
+    @Column(name = "surName")
+    private String surName;
 
     public User(String name, String sureName) {
         this.name = name;
-        this.sureName = sureName;
+        this.surName = sureName;
+    }
+
+    @Override
+    public String toString() {
+        return "id " + id + " " + name + " " + surName;
     }
 }

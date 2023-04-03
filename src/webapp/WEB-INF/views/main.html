@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/addUser}" th:object="${user}">
+    <label for="name">Name</label>
+    <input name="name" type="text" id="name"/>
+
+    <label for="surname">Surname</label>
+    <input name="surname" type="text" id="surname"/>
+
+    <input type="submit" value="add user">
+</form>
+<th th:each="user : ${usersList}">
+    <h1><a th:href="@{/main/{id}(id=${user.getId()})}" th:text="${user}"></a></h1>
+</th>
+</body>
+</html>
