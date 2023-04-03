@@ -1,12 +1,11 @@
-package web.dao;
+package web.service;
 
 import web.model.User;
 
 import java.util.List;
 
-public interface UserDao {
-
-    void add(User car);
+public interface UserService {
+    void add(User user);
 
     User get(long id);
 
