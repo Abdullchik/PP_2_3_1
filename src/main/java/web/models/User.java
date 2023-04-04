@@ -4,7 +4,6 @@ package web.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -22,11 +21,6 @@ public class User {
     private String name;
     @Column(name = "surName")
     private String surName;
-
-    public User(String name, String sureName) {
-        this.name = name;
-        this.surName = sureName;
-    }
 
     @Override
     public String toString() {

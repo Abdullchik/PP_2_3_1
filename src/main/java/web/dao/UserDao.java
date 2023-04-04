@@ -8,9 +8,7 @@ public interface UserDao {
 
     void add(User car);
 
-    User get(long id);
-
-    void update(long id, User user);
+    void update(User user);
 
     void delete(long id);
 

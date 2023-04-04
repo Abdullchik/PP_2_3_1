@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import web.models.User;
 import web.service.UserService;
 
+@RequestMapping("/main")
 @Controller
 public class UserController {
 
@@ -15,21 +16,36 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/main")
+    @GetMapping()
     public String viewUsers(Model model) {
         model.addAttribute("usersList", userService.getUsersList());
         return "main";
     }
-
-    @GetMapping("/main/{id}")
-    public String viewUser(Model model, @PathVariable Long id) {
-        model.addAttribute("user", userService.get(id));
-        return "user";
+    @GetMapping("/addUserPage")
+    public String addUserPage(@ModelAttribute("user") User user) {
+        return "addUserPage";
     }
-
-    @PostMapping("/addUser")
-    public String addUser(@ModelAttribute("user") User user) {
+    @PostMapping("/createUser")
+    public String createUser(@ModelAttribute("user") User user) {
         userService.add(user);
+        return "redirect:/main";
+    }
+    @GetMapping("/updateUserPage")
+    public String updateUserPage(@ModelAttribute("user") User user) {
+        return "updateUserPage";
+    }
+    @PatchMapping("/updateUser")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.update(user);
+        return "redirect:/main";
+    }
+    @GetMapping("/deleteUserPage")
+    public String deleteUserPage() {
+        return "deleteUserPage";
+    }
+    @DeleteMapping("/deleteUser")
+    public String deleteUser(@ModelAttribute("id") Long id) {
+        userService.delete(id);
         return "redirect:/main";
     }
 }
